@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "notes": {
+      "command": "npx",
+      "args": ["-y", "notes-mcp-server"],
+      "env": { "OPENAI_API_KEY": "sk-demoFAKEkey0000000000000000" }
+    },
+    "remote-search": { "url": "http://search.example.com/mcp" },
+    "files": { "command": "uvx", "args": ["files-mcp==0.3.1"], "autoApprove": ["*"] }
+  }
+}

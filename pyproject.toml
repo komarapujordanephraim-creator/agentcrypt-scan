@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentcrypt-scan"
+version = "0.1.0"
+description = "One scan for AI agent config risks (MCP, skills, prompts) and quantum-vulnerable cryptography."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "Komarapu Jordan Ephraim" }]
+keywords = ["ai-security", "mcp", "prompt-injection", "post-quantum", "sarif"]
+
+[project.scripts]
+agentcrypt = "agentcrypt_scan.cli:main"
+
+[tool.setuptools]
+packages = ["agentcrypt_scan"]

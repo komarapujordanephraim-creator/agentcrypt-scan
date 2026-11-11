@@ -1,0 +1,23 @@
+name: "AgentCrypt Scan"
+description: "Scan AI agent configs (MCP, skills, prompts) and code for agent risks and quantum-vulnerable cryptography. Writes SARIF."
+branding:
+  icon: "shield"
+  color: "blue"
+inputs:
+  path:
+    description: "Directory to scan"
+    default: "."
+  fail-on:
+    description: "Fail the job at this severity or higher (critical, high, medium, low, info, none)"
+    default: "high"
+  sarif:
+    description: "Where to write the SARIF report"
+    default: "agentcrypt.sarif"
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        python3 -m pip install --quiet "${{ github.action_path }}"
+        agentcrypt scan "${{ inputs.path }}" --format sarif -o "${{ inputs.sarif }}" --fail-on none
+        agentcrypt scan "${{ inputs.path }}" --fail-on "${{ inputs.fail-on }}"
